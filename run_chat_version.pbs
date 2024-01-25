@@ -1,0 +1,18 @@
+#PBS -N take2
+### Project code
+#PBS -A uncs0044
+#PBS -l walltime=12:00:00
+#PBS -q regular
+### Merge output and error files
+#PBS -j oe
+#PBS -k eod
+### Select 2 nodes with 36 CPUs each for a total of 72 MPI processes
+#PBS -l select=1
+
+export TMPDIR=/glade/scratch/$USER/temp
+mkdir -p $TMPDIR
+
+### Run the executable
+module load conda
+conda activate my-clone
+python ./chatgpt_version.py

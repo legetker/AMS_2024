@@ -1,0 +1,21 @@
+###Job Name
+#PBS -N hw_per_grid
+### Project code
+#PBS -A uncs0044
+#PBS -l walltime=06:00:00
+#PBS -q main
+### Merge output and error files
+#PBS -j oe
+#PBS -k eod
+### Select 2 nodes with 36 CPUs each for a total of 72 MPI processes
+#PBS -l select=1
+### Send email on abort, begin and end
+#PBS -m abe
+### Specify mail recipient
+#PBS -M legetker@ncsu.edu
+
+
+### Run the executable
+module load conda
+conda activate my-clone
+python ./calculate_gridded_distribution.py
